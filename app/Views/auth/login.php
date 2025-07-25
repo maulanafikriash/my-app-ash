@@ -56,9 +56,27 @@
                                     </small>
                                 <?php endif; ?>
                             </div>
+
+                            <div class="form-group">
+                                <label for="role">Login sebagai<span class="text-danger">*</span></label>
+                                <select class="form-control" id="role" name="role" required>
+                                    <option value="">-- Pilih Peran --</option>
+                                    <option value="admin" <?= old('role') == 'admin' ? 'selected' : '' ?>>Admin</option>
+                                    <option value="pegawai" <?= old('role') == 'pegawai' ? 'selected' : '' ?>>Pegawai</option>
+                                </select>
+                                <?php if (isset($validation) && $validation->hasError('role')) : ?>
+                                    <small class="text-danger"><?= $validation->getError('role'); ?></small>
+                                <?php endif; ?>
+                            </div>
+
                             <button class="btn btn-primary btn-user btn-block" type="submit">
                                 Login
                             </button>
+
+                            <div class="text-right mt-2">
+                                <a href="<?= base_url('auth/forgot-password'); ?>">Lupa Password?</a>
+                            </div>
+
                         </form>
                         <div class="text-center mt-3">
                             <small class="text-muted">&copy; <?= date('Y'); ?> CodeEagle Team</small>

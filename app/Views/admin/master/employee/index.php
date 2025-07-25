@@ -34,6 +34,7 @@
                             <th>Jenis Kelamin</th>
                             <th>Foto</th>
                             <th>Tgl Lahir</th>
+                            <th>Pendidikan</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -43,7 +44,7 @@
                             <tr>
                                 <td class="align-middle"><?= esc($i++); ?></td>
                                 <td class="align-middle"><?= esc($emp['employee_id']); ?></td>
-                                <td class="align-middle"><?= esc($emp['employee_name']); ?></td>
+                                <td class="align-middle"><?= esc($emp['employee_name']); ?></td>       
                                 <td class="align-middle">
                                     <?= esc($emp['gender'] === 'Laki-Laki' ? 'Laki-Laki' : 'Perempuan'); ?>
                                 </td>
@@ -51,6 +52,7 @@
                                     <img src="<?= base_url('img/pp/' . $emp['image']); ?>" style="width: 55px; height:55px" class="img-rounded" alt="Foto Pegawai">
                                 </td>
                                 <td class="align-middle"><?= esc(date('d-m-Y', strtotime($emp['birth_date']))); ?></td>
+                                <td class="align-middle"><?= esc($emp['education']); ?></td>
                                 <td class="text-center align-middle">
                                     <a href="<?= base_url('admin/master/employee/detail/' . $emp['employee_id']); ?>" class="btn btn-success btn-circle" title="Details">
                                         <span class="icon">
@@ -63,6 +65,16 @@
                                             <i class="fas fa-trash-alt"></i>
                                         </button>
                                     <?php else : ?>
+                                        <?php
+                                        /*      
+                                    <?php if (isset($emp['department_id']) && $emp['department_id'] === 'ADM') : ?>
+                                        <button type="button" class="btn btn-danger btn-circle" title="Tidak dapat dihapus" hidden>
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    <?php else : ?>
+                                         |
+                                        */
+                                        ?>
                                         <button type="button"
                                             class="btn btn-danger btn-circle delete-button"
                                             data-url="<?= base_url('admin/master/employee/delete/' . $emp['employee_id']); ?>"
